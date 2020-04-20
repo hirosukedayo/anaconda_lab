@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  main:
+    build: .
+    volumes:
+      - ./work:/work
+    ports:
+      - 9123:8888
+    tty: true
+
