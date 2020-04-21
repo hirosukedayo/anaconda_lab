@@ -14,6 +14,8 @@ anaconda + jupyterlab on docker
 ```bash
 docker-compose up
 ```
+Open http://localhost:9123 with your browser.
+Type `password`. 
 
 # Add modules to image
 Add python package names you want to requirements.txt.
