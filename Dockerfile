@@ -6,6 +6,26 @@ ENV PYTHONPATH ${WORKDIR}
 WORKDIR ${WORKDIR}
 
 # ---------------------------------
+# install liblbfgs & pylbfgs
+# ---------------------------------
+RUN yes | apt-get update
+RUN yes | apt-get install gcc make
+RUN yes | apt-get install libtool automake
+RUN git clone https://github.com/chokkan/liblbfgs && \
+    cd liblbfgs && \
+    ./autogen.sh && \
+    ./configure --enable-sse2 && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf liblbfgs
+
+RUN git clone https://rtaylor@bitbucket.org/rtaylor/pylbfgs.git && \
+    cd pylbfgs && \
+    python setup.py install && \
+    cd .. && \
+    yes | rm -rf pylbfgs
+# ---------------------------------
 # install jupyter and jupyterlab env
 # ---------------------------------
 ## install jupyter & vim
